@@ -7,95 +7,21 @@
 <meta name="description" content="Buttercloud makes butter-shaped squishies. Meet the 400 g salted butter squishy, the smaller versions and the bundles. A squishy toy, not food.">
 <meta name="theme-color" content="#fff9ed">
 <meta property="og:type" content="website"><meta property="og:title" content="Buttercloud — A little butter. A lot of squish."><meta property="og:description" content="The viral salted butter squishy in 400 g and small sizes. Swiss storefront demo."><meta property="og:locale" content="en_CH">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-/* ===== Tokens ===== */
-:root{--cream:#fff9ed;--paper:#fdfbf7;--yellow:#f5d76e;--brown:#33291f;--muted:#6f665a;--line:#e9e1d3;--gold:#7a6630;--radius:22px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--paper);color:var(--brown);font-family:"DM Sans",sans-serif;overflow-x:hidden}button,a,input,select,textarea{font:inherit;color:inherit}a{text-decoration:none}button{cursor:pointer}
-:focus-visible{outline:2px solid #8b762c;outline-offset:2px}h1,h2,h3,p{margin-top:0}
-/* ===== Header ===== */
-.announcement{background:var(--brown);color:#fff8e9;text-align:center;padding:10px 16px;font-size:12px;letter-spacing:.04em}
-header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,5vw,72px);border-bottom:1px solid var(--line);background:rgba(253,251,247,.95);position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}
-.logo{font:800 25px Manrope,sans-serif;letter-spacing:-1.5px}.logo span{color:#b89b35}
-.nav{display:flex;gap:30px;font-size:13px;color:#554b40}.nav a:hover{opacity:.6}
-.header-actions{display:flex;gap:10px;align-items:center}.icon-btn{background:transparent;border:1px solid var(--line);border-radius:50%;width:42px;height:42px;display:none;place-items:center;font-size:18px}
-.bag{border-radius:999px;padding:11px 16px;background:var(--yellow);border:0;font-size:12px;font-weight:700}.bag span{background:var(--brown);color:#fff;border-radius:99px;padding:2px 7px;margin-left:6px;display:inline-block}.bag.bump span{animation:bump .4s}
-@keyframes bump{40%{transform:scale(1.4)}}
-.mmenu{position:fixed;top:76px;left:0;right:0;z-index:19;background:var(--paper);border-bottom:1px solid var(--line);display:grid;padding:0 clamp(18px,5vw,72px);max-height:0;overflow:hidden;visibility:hidden;transition:max-height .3s,visibility .3s}.mmenu.open{max-height:340px;visibility:visible}.mmenu a{padding:15px 0;border-bottom:1px solid var(--line);font-weight:600}
-/* ===== Hero ===== */
-.hero{padding:50px clamp(18px,5vw,72px) 70px;display:grid;grid-template-columns:1fr 1.02fr;gap:clamp(28px,5vw,75px);align-items:center;max-width:1500px;margin:auto}
-.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:9px}.eyebrow:before{content:"";width:24px;height:1px;background:#b89b35}
-h1{font:800 clamp(44px,6vw,82px)/.98 Manrope,sans-serif;letter-spacing:-.065em;margin:22px 0}.hero-copy p{max-width:430px;line-height:1.8;color:var(--muted);font-size:15px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-block;border:1px solid var(--brown);border-radius:999px;padding:15px 22px;font-size:12px;font-weight:700;background:transparent;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn-dark{background:var(--brown);color:#fff}.microcopy{font-size:11px!important;margin-top:18px}
-.hero-copy>*{animation:rise .7s both}.hero-copy>*:nth-child(2){animation-delay:.08s}.hero-copy>*:nth-child(3){animation-delay:.16s}.hero-copy>*:nth-child(4){animation-delay:.24s}.hero-copy>*:nth-child(5){animation-delay:.32s}
-@keyframes rise{from{opacity:0;transform:translateY(16px)}}@keyframes float{50%{transform:rotate(-6deg) translateY(-10px)}}
-.hero-art{min-height:470px;background:#f4e9ce;border-radius:48% 48% 26px 26px;position:relative;overflow:hidden;display:grid;place-items:center}
-.sun{position:absolute;width:270px;height:270px;border-radius:50%;background:#f9d86d;right:5%;top:7%;opacity:.65}
-.art-label{position:absolute;top:26px;left:28px;background:#fff9ed;border-radius:99px;padding:10px 14px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;z-index:2}
-.butter{position:relative;width:min(62%,320px);aspect-ratio:1.2/1;background:linear-gradient(145deg,#ffe994,#f1c64b 65%,#d9a92c);border-radius:34px 42px 31px 38px;transform:rotate(-9deg);animation:float 6s ease-in-out infinite;box-shadow:inset 9px 10px 15px #fff2a6aa,inset -14px -17px 22px #b98c2280,0 30px 38px #7b5b2030;z-index:1}
-.butter:before{content:"";position:absolute;left:9%;top:10%;width:82%;height:22%;border-radius:50%;background:#fff1a1;opacity:.58;filter:blur(9px)}
-.butter:after{content:"BUTTERCLOUD";position:absolute;inset:0;display:grid;place-items:center;font:800 clamp(12px,2vw,19px) Manrope,sans-serif;letter-spacing:.06em;color:#8f6a14;transform:rotate(9deg)}
-.art-caption{position:absolute;bottom:25px;right:25px;font:italic 14px Georgia,serif;color:#6b5731}
-/* ===== Sections ===== */
-.section{padding:75px clamp(18px,5vw,72px);max-width:1500px;margin:auto}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:30px}.section h2{font:800 clamp(30px,4vw,48px)/1.05 Manrope,sans-serif;letter-spacing:-.05em;margin:12px 0}.section-intro{max-width:380px;color:var(--muted);font-size:13px;line-height:1.7;margin:0}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}.product-card{min-width:0;display:flex;flex-direction:column;transition:transform .3s}.product-card:hover{transform:translateY(-4px)}
-.product-image{width:100%;border:0;padding:0;height:300px;border-radius:var(--radius);display:grid;place-items:center;position:relative;overflow:hidden;transition:box-shadow .3s}.product-card:hover .product-image{box-shadow:0 18px 40px #33291f1a}
-.bg1{background:#f4ecdc}.bg2{background:#e8eadf}.bg3{background:#f2e5d5}
-.product-tag{position:absolute;top:15px;left:15px;background:#fff9ed;padding:8px 11px;border-radius:99px;font-size:10px;font-weight:700;z-index:1}
-.mini-butter{width:52%;aspect-ratio:1.25/1;border-radius:24px;background:linear-gradient(145deg,#ffe994,#e9bb3c);box-shadow:inset 6px 7px 10px #fff2a6aa,inset -9px -10px 12px #b98c2280,0 20px 28px #7b5b2030;transform:rotate(-8deg);display:grid;place-items:center;color:#8f6a14;font:800 12px Manrope;letter-spacing:.05em;transition:transform .35s}
-.product-card:hover .mini-butter{transform:rotate(-4deg) scale(1.06)}
-.product-info{display:flex;justify-content:space-between;gap:12px;padding:15px 2px 0}.product-info h3{font:700 16px Manrope;margin:0 0 5px}.product-info p{font-size:12px;color:var(--muted);margin:0 0 3px}.rate{color:#8a6d12!important}.price{font-size:15px;font-weight:700;white-space:nowrap}.desc{font-size:12px;line-height:1.7;color:var(--muted);padding:8px 2px 0;flex:1}
-.quick-add{margin-top:14px;width:100%;border:1px solid var(--line);background:transparent;border-radius:999px;padding:12px;font-size:12px;font-weight:700;transition:background .2s,transform .15s}.quick-add:hover{background:var(--yellow);border-color:var(--yellow)}.quick-add:active{transform:scale(.97)}
-.comparison{background:#f3ead9;border-radius:30px;padding:clamp(25px,5vw,60px);display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.comparison p{color:var(--muted);font-size:14px;line-height:1.8;max-width:430px}.size-row{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #dcd0bb;padding:15px 0;font-size:13px}
-.story{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.story-art{min-height:330px;border-radius:28px;background:#e6e9dd;display:grid;place-items:center}.story-circle{width:220px;height:220px;border-radius:50%;background:#cdd7c2;display:grid;place-items:center;text-align:center;font:800 18px Manrope;letter-spacing:-.04em;transform:rotate(8deg);box-shadow:0 22px 30px #66755a22}.story-copy p{color:var(--muted);font-size:14px;line-height:1.9;max-width:470px}
-.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;align-items:start}.review{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fffdf8;font-size:13px;line-height:1.75;color:var(--muted)}.review:nth-child(2){margin-top:22px}.review b{display:block;color:var(--brown);margin-top:12px;font-size:12px}.review .st{color:#8a6d12;letter-spacing:2px}
-.ship-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}.ship-box{background:#f7f0df;border-radius:18px;padding:24px;font-size:13px;line-height:1.7;color:var(--muted)}.ship-box h3{font:700 17px Manrope;color:var(--brown);margin-bottom:8px}.ship-box strong{color:var(--brown)}
-.faq-list{max-width:850px;margin:25px auto 0}.faq-item{border-bottom:1px solid var(--line)}.faq-q{display:flex;justify-content:space-between;gap:15px;width:100%;background:none;border:0;padding:22px 0;text-align:left;font-weight:700}.faq-a{display:none;color:var(--muted);font-size:13px;line-height:1.8;padding:0 30px 20px 0}.faq-item.open .faq-a{display:block;animation:rise .3s}.plus{transition:transform .25s}.faq-item.open .plus{transform:rotate(45deg)}
-.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:45px;align-items:start}.contact p{color:var(--muted);font-size:14px;line-height:1.8;max-width:380px}
-.newsletter{margin:0 clamp(18px,5vw,72px) 70px;background:var(--yellow);border-radius:28px;padding:clamp(28px,5vw,58px);display:flex;justify-content:space-between;align-items:center;gap:30px}.newsletter h2{font:800 clamp(28px,3.5vw,42px)/1.05 Manrope;letter-spacing:-.05em;margin:0 0 10px}.newsletter p{margin:0;font-size:13px;color:#5c4d22}.signup{display:flex;gap:8px;max-width:440px;width:100%}.signup input{min-width:0;flex:1;border:1px solid #c8ad4d;background:#fff9ed;border-radius:999px;padding:14px 17px}.signup button{background:var(--brown);color:#fff;border:0;border-radius:999px;padding:0 18px;font-size:12px;font-weight:700}
-.notice{margin:0 clamp(18px,5vw,72px) 40px;padding:15px 18px;background:#f7f0df;border:1px solid #e7dcc2;border-radius:14px;font-size:11px;line-height:1.7;color:#6d5d3e}
-/* ===== Footer ===== */
-footer{background:#33291f;color:#fdf6e8;padding:45px clamp(18px,5vw,72px) 25px}.footer-top{display:flex;justify-content:space-between;gap:35px;flex-wrap:wrap}.footer-brand p{font-size:12px;color:#c9bead;max-width:250px;line-height:1.7;margin-top:12px}.footer-links{display:flex;gap:clamp(25px,5vw,70px);flex-wrap:wrap}.footer-col{display:grid;gap:12px;align-content:start;font-size:12px;color:#d6cbbb}.footer-col strong{color:#fff5e3;font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}.footer-col a,.footer-col button{background:none;border:0;padding:0;text-align:left;color:#d6cbbb;font-size:12px}.footer-col a:hover,.footer-col button:hover{color:#fff}.footer-bottom{border-top:1px solid #594d40;margin-top:35px;padding-top:18px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:11px;color:#b9ad9c}
-/* ===== Layers: modals, cart drawer ===== */
-.layer{position:fixed;inset:0;z-index:40;background:#1d170f70;display:grid;place-items:center;padding:16px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}.layer.show{opacity:1;visibility:visible}#ck{z-index:60}
-.card{position:relative;background:var(--paper);border-radius:22px;max-height:calc(100dvh - 32px);overflow:auto;width:min(480px,100%);padding:26px;transform:translateY(16px);transition:transform .3s}.show .card{transform:none}
-.card.w{width:min(880px,100%)}.card.m{width:min(660px,100%)}
-.side{place-items:stretch end;padding:0}.side .card{border-radius:0;height:100vh;height:100dvh;max-height:none;width:min(430px,100%);display:flex;flex-direction:column;transform:translateX(40px)}
-.close{border:1px solid var(--line);background:var(--paper);border-radius:50%;width:38px;height:38px;font-size:18px;flex:none}.card>.close{position:absolute;top:14px;right:14px;z-index:2}
-.drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}.drawer-head h2,.card h2{font:800 24px Manrope;margin:0}
-.cart-items{flex:1;overflow:auto;padding:15px 0}.cart-line{display:grid;grid-template-columns:65px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:12px}.cart-thumb{background:#f4e6be;border-radius:12px;display:grid;place-items:center;height:65px}.cart-thumb .mini-butter{width:68%;font-size:0;border-radius:10px;box-shadow:inset 3px 3px 5px #fff2a6aa,0 6px 8px #7b5b2030}.cart-line strong{display:block;margin-bottom:4px}.cart-line small{color:var(--muted)}
-.qty{display:flex;gap:10px;align-items:center;margin-top:9px}.qty button{background:none;border:1px solid var(--line);border-radius:50%;width:28px;height:28px}.link{background:none;border:0;padding:0;text-decoration:underline;color:var(--muted);font-size:11px;margin-top:6px}
-.tr{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}.tr.big{font-weight:800;font-size:16px;border-top:1px solid var(--line);padding-top:12px;margin-top:6px}.cart-note{font-size:11px;color:var(--muted);line-height:1.6}
-.checkout{width:100%;border:0;background:var(--brown);color:#fff;border-radius:999px;padding:15px;margin-top:10px;font-weight:700;font-size:13px;transition:transform .15s}.checkout:hover:not(:disabled){transform:translateY(-2px)}.checkout:disabled{opacity:.4;cursor:not-allowed}.empty{color:var(--muted);text-align:center;padding:40px 0;font-size:13px;line-height:1.7}
-.pm-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.pm-img{border-radius:var(--radius);min-height:340px;display:grid;place-items:center;position:relative}.pm-img .mini-butter{width:64%;font-size:17px}.pm-info p{font-size:13px;line-height:1.75;color:var(--muted)}.pm-info h2{font-size:28px;padding-right:40px}.pm-row{display:flex;gap:12px;align-items:center;margin:18px 0}.pm-row .btn{flex:1;text-align:center}
-details{border-top:1px solid var(--line);padding:12px 0;font-size:13px;color:var(--muted);line-height:1.7}details summary{font-weight:700;color:var(--brown);cursor:pointer}details p{margin:8px 0 0}
-.co{display:grid;grid-template-columns:1.25fr 1fr;gap:26px}.co h3{font:700 15px Manrope;margin:20px 0 10px}.co h3:first-child{margin-top:0}.sum{background:#f3ead9;border-radius:16px;padding:20px;align-self:start}.sum .cart-line{border-color:#dcd0bb;grid-template-columns:1fr auto}
-.f{display:grid;gap:5px;font-size:12px;font-weight:700;margin-bottom:10px}.f input,.f select,.f textarea{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;font-weight:400;width:100%;min-width:0}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row2.z{grid-template-columns:1fr 2fr}
-.opt{display:flex;gap:9px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-size:13px;margin-bottom:8px;background:#fff}.opt input{accent-color:#8b762c}.demo-note{font-size:11px;color:var(--muted);line-height:1.6}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 36px 18px 0}.tabs button{border:1px solid var(--line);background:none;border-radius:99px;padding:7px 12px;font-size:11px;font-weight:700}.tabs button[aria-current=true]{background:var(--brown);color:#fff;border-color:var(--brown)}.legal p{font-size:13px;line-height:1.75;color:var(--muted)}
-.setting-row{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--line);font-size:13px}.setting-row small{display:block;color:var(--muted);margin-top:4px;line-height:1.5}.setting-row input{accent-color:#8b762c;width:20px;height:20px;flex:none}
-.cookie-banner{position:fixed;z-index:45;bottom:18px;left:18px;max-width:560px;background:#fffdf8;border:1px solid var(--line);box-shadow:0 14px 55px #33291f20;border-radius:20px;padding:22px;display:none}.cookie-banner.show{display:block;animation:rise .5s}.cookie-banner h3{font:700 16px Manrope;margin:0 0 8px}.cookie-banner p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 16px}
-.cookie-actions{display:flex;gap:8px;flex-wrap:wrap}.cookie-actions button{border-radius:99px;padding:10px 14px;font-size:11px;font-weight:700;border:1px solid var(--brown);background:transparent}.cookie-actions .accept{background:var(--brown);color:#fff}
-.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--brown);color:#fff;padding:13px 18px;border-radius:99px;font-size:12px;z-index:80;transition:.25s;max-width:calc(100% - 32px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
-/* ===== Responsive ===== */
-@media(max-width:850px){.nav{gap:16px}.comparison,.story,.contact{grid-template-columns:1fr}.newsletter{align-items:flex-start;flex-direction:column}.signup{max-width:100%}.co{grid-template-columns:1fr}}
-@media(max-width:700px){.pm-grid{grid-template-columns:1fr}.pm-img{min-height:240px}.card{padding:20px}}
-@media(max-width:620px){header{height:66px}.mmenu{top:66px}.nav{display:none}.icon-btn{display:grid}.hero{grid-template-columns:1fr;padding-top:35px;gap:28px}.hero-art{min-height:340px;grid-row:1}h1{font-size:50px}.section{padding-top:55px;padding-bottom:55px}.section-head{align-items:flex-start;flex-direction:column}.product-image{height:240px}.story-art{min-height:270px}.review:nth-child(2){margin-top:0}.signup{flex-direction:column}.signup button{padding:14px}.footer-top{flex-direction:column}.cookie-banner{left:10px;right:10px;bottom:10px;max-width:none}.logo{font-size:22px}.row2{grid-template-columns:1fr}.row2.z{grid-template-columns:1fr 1.4fr}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="announcement">Free shipping in Switzerland from CHF 60 · Demo storefront</div>
 <header>
 <a class="logo" href="#top" aria-label="Buttercloud home">butter<span>cloud</span>.</a>
 <nav class="nav" aria-label="Main navigation"><a href="#shop">Shop</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
-<div class="header-actions"><button class="icon-btn" id="menu-btn" data-a="menu" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">☰</button><button class="bag" id="bag" data-a="cart" aria-label="Open cart">Cart <span id="cc">0</span></button></div>
-</header>
+<div class="header-actions"><button class="snd" id="snd" data-a="snd" aria-pressed="true" aria-label="Turn sound off">♪</button><button class="icon-btn" id="menu-btn" data-a="menu" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">☰</button><button class="bag" id="bag" data-a="cart" aria-label="Open cart">Cart <span id="cc">0</span></button></div>
 <nav class="mmenu" id="mmenu" aria-label="Mobile navigation"><a href="#shop">Shop</a><a href="#about">About</a><a href="#shipping">Shipping</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+</header>
 <main id="top">
 <section class="hero">
 <div class="hero-copy"><div class="eyebrow">The viral salted butter squishy</div><h1>A little butter.<br>A lot of squish.</h1><p>Meet the 400 g Buttercloud Squishy: a soft, chunky block of salted butter made for tiny breaks and busy hands. Smaller sizes are here too.</p><div class="hero-actions"><a class="btn btn-dark" href="#shop">Shop the 400 g squishy</a><a class="btn" href="#sizes">Find your size</a></div><p class="microcopy">A squishy toy. Looks like butter, not for eating.</p></div>
-<div class="hero-art" role="img" aria-label="Illustration of the butter-yellow Buttercloud 400 g squishy"><div class="sun"></div><div class="art-label">Salted butter · 400 g</div><div class="butter"></div><div class="art-caption">A bit buttery. A bit brilliant.</div></div>
+<div class="hero-art" role="img" aria-label="Illustration of the butter-yellow Buttercloud 400 g squishy"><div class="sun"></div><div class="art-label">Salted butter · 400 g</div><div class="stick hero-stick" style="--w:min(68%,380px)"><span class="lb"><i>Salted</i><b>BUTTERCLOUD</b><u>400 g</u></span></div><div class="art-caption">A bit buttery. A bit brilliant.</div></div>
 </section>
 
 <section class="section" id="shop">
@@ -162,69 +88,6 @@ details{border-top:1px solid var(--line);padding:12px 0;font-size:13px;color:var
 <div class="cookie-actions" style="margin-top:20px"><button class="accept" data-a="cksave">Save choices</button><button data-a="ckall">Accept all</button></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const store={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const money=n=>'CHF '+n.toFixed(2),stars=r=>'★'.repeat(Math.round(r))+'☆'.repeat(5-Math.round(r));
-const P={
-big:{id:'big',name:'Buttercloud Squishy 400 g',size:'Large · 400 g',price:24.9,rating:4.8,reviews:126,badge:'Bestseller',bg:'bg1',short:'The original salted butter squishy: chunky, soft and slow to bounce back.'},
-mini:{id:'mini',name:'Buttercloud Squishy Small',size:'Small · approx. 150 g',price:9.9,rating:4.7,reviews:58,badge:'Pocket-sized',bg:'bg2',short:'The same butter look in a smaller, cheaper size for bags and pockets.'},
-duo:{id:'duo',name:'Small Duo Bundle',size:'2 × small',price:17.9,rating:4.7,reviews:31,badge:'Bundle',bg:'bg3',short:'Two small squishies: one for you, one to share or swap.'}};
-const art=(id,big)=>id==='duo'?'<div style="display:flex;gap:9px;align-items:center;width:100%;justify-content:center"><div class="mini-butter" style="width:'+(big?'38%':'100px')+';font-size:10px">SMALL</div><div class="mini-butter" style="width:'+(big?'30%':'72px')+';font-size:9px">SMALL</div></div>':id==='mini'?'<div class="mini-butter" style="'+(big?'':'width:48%')+'">SMALL</div>':'<div class="mini-butter" style="'+(big?'':'width:65%;font-size:15px')+'">BUTTERCLOUD</div>';
-let cart=store.get('bc-cart',{}),last;
-Object.keys(cart).forEach(k=>{if(!P[k]||!(cart[k]>0))delete cart[k]});
-const dom=c=>c==='CH'||c==='LI';
-function tot(c){const sub=Object.keys(cart).reduce((s,k)=>s+P[k].price*cart[k],0);const sh=!sub?0:dom(c||'CH')?(sub>=60?0:6.9):(sub>=120?0:14.9);return{sub,sh,total:sub+sh}}
-function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2800)}
-/* ---- Layers ---- */
-function open(id){const l=$('#'+id);last=document.activeElement;l.classList.add('show');document.body.style.overflow='hidden';setTimeout(()=>{const f=l.querySelector('.card button,.card input,.card select');f&&f.focus()},60)}
-function shut(id){$('#'+id).classList.remove('show');if(!$('.layer.show'))document.body.style.overflow='';if(last&&last.isConnected)last.focus()}
-/* ---- Shop ---- */
-$('#products').innerHTML=Object.values(P).map(p=>`<article class="product-card"><button class="product-image ${p.bg}" data-a="view" data-id="${p.id}" aria-label="View details for ${p.name}"><span class="product-tag">${p.badge}</span>${art(p.id)}</button><div class="product-info"><div><h3>${p.name}</h3><p>${p.size}</p><p class="rate"><span aria-hidden="true">${stars(p.rating)}</span> ${p.rating} (${p.reviews} reviews)</p></div><div class="price">${money(p.price)}</div></div><p class="desc">${p.short}</p><button class="quick-add" data-a="add" data-id="${p.id}" aria-label="Add ${p.name} to cart">Add to cart</button></article>`).join('');
-function view(id){const p=P[id];$('#pm').setAttribute('aria-labelledby','pm-t');$('#pm-card').innerHTML=`<button class="close" data-a="close" aria-label="Close product details">×</button><div class="pm-grid"><div class="pm-img ${p.bg}"><span class="product-tag">${p.badge}</span>${art(id,1)}</div><div class="pm-info"><h2 id="pm-t">${p.name}</h2><p class="rate" style="margin-bottom:4px"><span aria-hidden="true">${stars(p.rating)}</span> ${p.rating} · ${p.reviews} reviews</p><div class="price" style="font-size:22px">${money(p.price)}</div><p style="margin-top:10px"><strong>Size:</strong> ${p.size}<br>${p.short} Squeeze it, press it, watch it rise again. It is a squishy toy and not edible.</p><div class="pm-row"><div class="qty" style="margin:0"><button data-a="q" data-d="-1" aria-label="Decrease quantity">−</button><span id="pq" aria-live="polite">1</span><button data-a="q" data-d="1" aria-label="Increase quantity">+</button></div><button class="btn btn-dark" data-a="addq" data-id="${id}">Add to cart</button></div><details open><summary>Product details</summary><p>Butter-shaped squishy with a salted-butter look. Keep away from heat and direct sunlight and wipe clean with a dry cloth. Not a food item and not for eating. Check the product label for age guidance.</p></details><details><summary>Shipping</summary><p>Switzerland CHF 6.90 (free from CHF 60), Europe CHF 14.90 (free from CHF 120). Example rates for this demo.</p></details><details><summary>Returns</summary><p>Example policy: return unused items in their original packaging within 14 days of delivery.</p></details></div></div>`;open('pm')}
-/* ---- Cart ---- */
-function save(){store.set('bc-cart',cart)}
-function add(id,n){cart[id]=Math.min(20,(cart[id]||0)+n);save();renderCart();const b=$('#bag');b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump');toast(P[id].name+' added to your cart.')}
-function chg(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];else cart[id]=Math.min(20,cart[id]);save();renderCart()}
-function renderCart(){const ids=Object.keys(cart),n=ids.reduce((s,k)=>s+cart[k],0),t=tot();$('#cc').textContent=n;$('#cart-n').textContent='('+n+')';
-$('#cart-items').innerHTML=ids.length?ids.map(k=>`<div class="cart-line"><div class="cart-thumb"><div class="mini-butter"></div></div><div><strong>${P[k].name}</strong><small>${money(P[k].price)} · ${P[k].size}</small><div class="qty"><button data-a="dec" data-id="${k}" aria-label="Decrease quantity of ${P[k].name}">−</button><span>${cart[k]}</span><button data-a="inc" data-id="${k}" aria-label="Increase quantity of ${P[k].name}">+</button></div><button class="link" data-a="rm" data-id="${k}">Remove</button></div><strong>${money(P[k].price*cart[k])}</strong></div>`).join(''):'<div class="empty">Your cart is empty.<br>Find something squishy in the <a href="#shop" data-a="close" style="text-decoration:underline">shop</a>.</div>';
-const hint=t.sub&&t.sub<60?`<p class="cart-note">Add ${money(60-t.sub)} more for free shipping in Switzerland.</p>`:'';
-$('#cart-foot').innerHTML=`<div style="border-top:1px solid var(--line);padding-top:16px"><div class="tr"><span>Subtotal</span><span>${money(t.sub)}</span></div><div class="tr"><span>Shipping (Switzerland)</span><span>${t.sh?money(t.sh):(t.sub?'Free':'–')}</span></div><div class="tr big"><span>Total</span><span>${money(t.total)}</span></div>${hint}<button class="checkout" data-a="checkout" ${ids.length?'':'disabled'}>Go to checkout</button><p class="cart-note" style="margin:8px 0 0">Demo store: no real payment is taken.</p></div>`}
-/* ---- Checkout ---- */
-function upd(){const c=$('#country').value,t=tot(c);$('#co-t').innerHTML=`<div class="tr"><span>Subtotal</span><span>${money(t.sub)}</span></div><div class="tr"><span>Shipping</span><span>${t.sh?money(t.sh):'Free'}</span></div><div class="tr big"><span>Total</span><span>${money(t.total)}</span></div>`;const z=$('#zip');z.pattern=dom(c)?'\\d{4}':'[A-Za-z0-9 \\-]{3,10}';z.title=dom(c)?'Swiss and Liechtenstein postal codes have 4 digits':'Enter a valid postal code'}
-function renderCo(){$('#co-main').hidden=false;$('#co-done').hidden=true;$('#co-sum').innerHTML=Object.keys(cart).map(k=>`<div class="cart-line"><div><strong>${P[k].name}</strong><small>Qty ${cart[k]}</small></div><strong>${money(P[k].price*cart[k])}</strong></div>`).join('')+'<div id="co-t" style="margin-top:12px"></div>';upd()}
-$('#country').addEventListener('change',upd);
-$('#co-f').addEventListener('submit',e=>{e.preventDefault();$('#ref').textContent='BC-DEMO-'+Math.floor(1000+Math.random()*9000);cart={};save();renderCart();$('#co-main').hidden=true;$('#co-done').hidden=false;e.target.reset()});
-/* ---- FAQ ---- */
-const FAQ=[['What is the Buttercloud Squishy?','A soft squishy toy shaped like a block of salted butter. You squeeze it, it slowly rises back.'],['Is it food?','No. It only looks like butter. It is a squishy toy and must not be eaten.'],['What sizes are available?','A large 400 g version, a small version of about 150 g and a bundle of two small ones. Sizes are example specifications in this demo.'],['How soft is it?','Soft and slow-rising. Softness can vary a little from piece to piece.'],['How should I store it?','Keep it at room temperature, away from heat and direct sunlight. Wipe with a dry cloth.'],['Is it safe for children?','Please read the label and age guidance on the final product, and supervise young children. It is not food.'],['Where do you ship and how long does it take?','Switzerland, Liechtenstein and selected European countries. The delivery times shown here are examples for this demo.'],['Can I return it?','In this demo policy, unused items in original packaging can be returned within 14 days of delivery.']];
-$('#faq-list').innerHTML=FAQ.map((f,i)=>`<div class="faq-item"><button class="faq-q" data-a="faq" aria-expanded="false" aria-controls="fa${i}">${f[0]} <span class="plus" aria-hidden="true">＋</span></button><div class="faq-a" id="fa${i}">${f[1]}</div></div>`).join('');
-/* ---- Legal ---- */
-const L={returns:['Shipping & Returns',['Example shipping: Switzerland and Liechtenstein CHF 6.90 (free from CHF 60), Europe CHF 14.90 (free from CHF 120).','Example returns: unused items in original packaging may be returned within 14 days of delivery. Return shipping costs and the refund process must be defined before launch.']],privacy:['Privacy Policy',['Demo text. This storefront stores your cart and cookie choice in your browser only. It sends no data to a server.','Before launch, a privacy policy that matches the real data processing (orders, payments, email, analytics) must be written and reviewed.']],terms:['Terms & Conditions',['Demo text. This storefront does not accept real orders.','Before launch, add terms covering prices, orders, delivery, withdrawal rights, warranty and liability, reviewed for Swiss law.']],imprint:['Imprint',['Company name: [to be added]','Address: [to be added]','Contact email: [to be added]','Commercial register / UID / VAT number: [to be added]','Represented by: [to be added]']]};
-function showLegal(k){$('#lg-b').innerHTML=`<div class="tabs" role="group" aria-label="Legal pages">${Object.keys(L).map(x=>`<button data-a="tab" data-k="${x}" aria-current="${x===k}">${L[x][0]}</button>`).join('')}</div><h2>${L[k][0]}</h2>${L[k][1].map(t=>`<p>${t}</p>`).join('')}`}
-/* ---- Cookies ---- */
-function saveCk(o){store.set('bc-cookies',{necessary:true,pref:!!o.pref,ana:!!o.ana,mkt:!!o.mkt});$('#cookie-banner').classList.remove('show');if($('#ck').classList.contains('show'))shut('ck')}
-function openCk(){const c=store.get('bc-cookies',{});$('#c-pref').checked=!!c.pref;$('#c-ana').checked=!!c.ana;$('#c-mkt').checked=!!c.mkt;open('ck')}
-if(!store.get('bc-cookies',null))setTimeout(()=>$('#cookie-banner').classList.add('show'),600);
-/* ---- Events ---- */
-document.addEventListener('click',e=>{
-const l=e.target.closest('.layer');if(l&&e.target===l){shut(l.id);return}
-if(e.target.closest('.mmenu a'))$('#mmenu').classList.remove('open'),$('#menu-btn').setAttribute('aria-expanded','false');
-const t=e.target.closest('[data-a]');if(!t)return;const id=t.dataset.id,a=t.dataset.a;if(a==='legal'||a==='toast')e.preventDefault();
-const acts={view:()=>view(id),add:()=>add(id,1),addq:()=>{add(id,+$('#pq').textContent);shut('pm');open('cart')},
-q:()=>{const n=$('#pq');n.textContent=Math.min(10,Math.max(1,+n.textContent+ +t.dataset.d))},
-cart:()=>open('cart'),close:()=>shut(t.closest('.layer').id),inc:()=>chg(id,1),dec:()=>chg(id,-1),rm:()=>chg(id,-99),
-checkout:()=>{shut('cart');renderCo();open('co')},
-menu:()=>{const o=$('#mmenu').classList.toggle('open');t.setAttribute('aria-expanded',o)},
-faq:()=>{const o=t.parentElement.classList.toggle('open');t.setAttribute('aria-expanded',o)},
-cookies:()=>openCk(),ckall:()=>saveCk({pref:1,ana:1,mkt:1}),ckno:()=>saveCk({}),cksave:()=>saveCk({pref:$('#c-pref').checked,ana:$('#c-ana').checked,mkt:$('#c-mkt').checked}),
-legal:()=>{showLegal(t.dataset.k);open('lg')},tab:()=>showLegal(t.dataset.k),toast:()=>toast(t.dataset.m)};
-acts[a]&&acts[a]()});
-document.addEventListener('keydown',e=>{
-if(e.key==='Escape'){$$('.layer.show').forEach(l=>shut(l.id));$('#mmenu').classList.remove('open')}
-if(e.key==='Tab'){const l=$$('.layer.show').pop();if(!l)return;const f=[...l.querySelectorAll('button,input,select,textarea,a[href]')].filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){z.focus();e.preventDefault()}else if(!e.shiftKey&&document.activeElement===z){a.focus();e.preventDefault()}}});
-$('#cf').addEventListener('submit',e=>{e.preventDefault();$('#cf-msg').textContent='Thanks, '+e.target.name.value+'. This is a demo form, so your message was not sent.';e.target.reset()});
-$('#nl').addEventListener('submit',e=>{e.preventDefault();toast('Demo only: newsletter sign-up is not connected.');e.target.reset()});
-renderCart();
-</script>
+<script src="js/app.js"></script>
 </body>
 </html>
