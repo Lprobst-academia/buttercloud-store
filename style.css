@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 /* ===== Tokens ===== */
 :root{--cream:#fff9ed;--paper:#fdfbf7;--yellow:#f5d76e;--brown:#33291f;--muted:#6f665a;--line:#e9e1d3;--gold:#7a6630;--radius:22px}
@@ -88,3 +87,10 @@ details{border-top:1px solid var(--line);padding:12px 0;font-size:13px;color:var
 .art{display:grid;place-items:center;width:100%;height:100%;position:relative}.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}.art.has .ph{opacity:1}.art.has .stick,.art.has .duo{visibility:hidden}
 .pm-img{padding:20px 0 48px}.hint{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted);margin:0;padding:0 12px}
 .cart-thumb .stick{transform:rotate(-6deg)}.snd{background:transparent;border:1px solid var(--line);border-radius:50%;width:42px;height:42px;display:grid;place-items:center;font-size:18px}.snd[aria-pressed=false]{opacity:.45;text-decoration:line-through}
+
+/* ===== Crack look and overflow safety ===== */
+.cr .c0{stroke:#a8761a;stroke-width:3.4;opacity:.28}.cr .c1{stroke:#4a3208;stroke-width:1.3;opacity:.9}.cr .c2{stroke:#fff6c0;stroke-width:.6;opacity:.9;transform:translate(.8px,.8px)}
+.stick[data-n="4"]{filter:contrast(1.06) brightness(.98)}.ph{object-fit:contain;padding:8px}
+.hero>*,.story>*,.comparison>*,.contact>*,.co>*,.pm-grid>*{min-width:0}img,svg{max-width:100%}
+.cookie-banner{max-height:70vh;overflow:auto}
+@media(max-width:400px){.logo{font-size:20px}.header-actions{gap:5px}.bag{padding:10px 11px}header{padding:0 14px}}
