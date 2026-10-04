@@ -6,7 +6,7 @@ big:{id:'big',name:'Buttercloud Squishy 400 g',size:'Large · 400 g',price:24.9,
 mini:{id:'mini',name:'Buttercloud Squishy Small',size:'Small · approx. 150 g',price:9.9,rating:4.7,reviews:58,badge:'Pocket-sized',bg:'bg2',short:'The same butter look in a smaller, cheaper size for bags and pockets.'},
 duo:{id:'duo',name:'Small Duo Bundle',size:'2 × small',price:17.9,rating:4.7,reviews:31,badge:'Bundle',bg:'bg3',short:'Two small squishies: one for you, one to share or swap.'}};
 const LB={big:['Salted','BUTTERCLOUD','400 g'],mini:['Salted','BUTTERCLOUD','150 g']};
-const stk=(k,w,btn)=>{const l=LB[k],i=`<span class="lb"><i>${l[0]}</i><b>${l[1]}</b><u>${l[2]}</u></span>`;return btn?`<button class="stick" id="stk" data-a="crack" data-n="0" style="--w:${w}" aria-label="Squeeze the squishy to crack it">${i}<svg class="cr" id="cr" viewBox="0 0 230 100" aria-hidden="true"></svg></button>`:`<div class="stick" style="--w:${w}">${i}</div>`};
+const stk=(k,w,btn)=>{const l=LB[k],i=`<span class="lb"><i>${l[0]}</i><b>${l[1]}</b><u>${l[2]}</u></span>`;return btn?`<button class="stick" id="stk" data-a="crack" data-n="0" style="--w:${w}" aria-label="Squeeze the squishy to crack it">${i}<svg class="cr" id="cr" viewBox="0 0 230 100" aria-hidden="true"><defs><radialGradient id="dn"><stop offset="0" stop-color="#8a5a0a" stop-opacity=".4"/><stop offset="1" stop-color="#8a5a0a" stop-opacity="0"/></radialGradient></defs><g id="crg"></g></svg></button>`:`<div class="stick" style="--w:${w}">${i}</div>`};
 const art=(id,big)=>{const k=id==='duo'?'mini':id,w=id==='big'?(big?'84%':'74%'):(big?'72%':'62%');const body=id==='duo'?`<div class="duo">${stk(k,w,big)}${stk(k,w)}</div>`:stk(k,w,big);
 return big?body:`<span class="art">${body}<img class="ph" src="${id}.jpg" alt="${P[id].name}" loading="lazy" onload="this.parentNode.classList.add('has')" onerror="this.remove()"></span>`};
 let cart=store.get('bc-cart',{}),last;
@@ -23,11 +23,16 @@ function play(n,v){if(mute)return;try{A[n]=A[n]||new Audio(n+'.wav');const a=A[n
 function syncSnd(){const b=$('#snd');b.setAttribute('aria-pressed',!mute);b.setAttribute('aria-label',mute?'Turn sound on':'Turn sound off')}
 function toggleSnd(){mute=!mute;store.set('bc-mute',mute);syncSnd();play('pop')}
 /* ---- Crack ---- */
-const CR=['M118 6 L112 30 L122 46 L114 66','M122 46 L146 56 L152 78 L168 94','M112 30 L88 38 L80 58 L60 66 M114 66 L100 86','M146 56 L176 46 L198 54 M88 38 L70 20 M168 94 L190 84'];
-const CM=['Tap the butter. Squeeze until it cracks.','A thin crack appears.','It spreads.','Almost there.','Cracked! Tap once more to start again.'];
-function crack(){const s=$('#stk');if(!s)return;let n=+s.dataset.n;n=n>=4?0:n+1;s.dataset.n=n;s.classList.remove('sq');void s.offsetWidth;s.classList.add('sq');
-$('#cr').innerHTML=CR.slice(0,n).map(d=>`<path d="${d}" class="c1"/><path d="${d}" class="c2"/>`).join('');$('#cm').textContent=CM[n];
-play('squish',.5);if(n)setTimeout(()=>play('crack',n===4?1:.6),70)}
+const CM=['Tap the butter. Squeeze until it cracks.','A first crack appears.','It spreads.','Almost there.','Cracked! Tap once more to start again.'];
+const rnd=(a,b)=>a+Math.random()*(b-a);
+function fissure(x,y,ang,len,dp){let d='M'+x.toFixed(1)+' '+y.toFixed(1),out='';while(len>0){const st=rnd(4,9);ang+=rnd(-.6,.6);x+=Math.cos(ang)*st;y+=Math.sin(ang)*st*.8;len-=st;d+=' L'+x.toFixed(1)+' '+y.toFixed(1);if(dp<2&&Math.random()<.22)out+=fissure(x,y,ang+rnd(-1.2,1.2),len*.6,dp+1)}return '<path d="'+d+'"/>'+out}
+function crack(e){const s=$('#stk');if(!s)return;let n=+s.dataset.n;n=n>=4?0:n+1;s.dataset.n=n;s.classList.remove('sq');void s.offsetWidth;s.classList.add('sq');
+const g=$('#crg');if(!n)g.innerHTML='';else{let x=rnd(60,170),y=rnd(30,70);
+if(e&&e.detail>0){const r=s.getBoundingClientRect(),a=.105,dx=e.clientX-r.left-r.width/2,dy=e.clientY-r.top-r.height/2;x=115+(dx*Math.cos(a)-dy*Math.sin(a))/s.offsetWidth*230;y=50+(dx*Math.sin(a)+dy*Math.cos(a))/s.offsetHeight*100}
+x=Math.max(14,Math.min(216,x));y=Math.max(14,Math.min(86,y));const L=n===4?120:rnd(30,55)+n*10,k=n===4?4:3;
+const p=Array.from({length:k},(_,i)=>fissure(x,y,Math.PI*2*i/k+rnd(-.5,.5),L*rnd(.6,1),0)).join('');
+g.insertAdjacentHTML('beforeend','<circle cx="'+x+'" cy="'+y+'" r="15" fill="url(#dn)"/><g class="c0">'+p+'</g><g class="c1">'+p+'</g><g class="c2">'+p+'</g>')}
+$('#cm').textContent=CM[n];play('squish',.5);if(n)setTimeout(()=>play('crack',n===4?1:.7),60)}
 /* ---- Shop ---- */
 $('#products').innerHTML=Object.values(P).map(p=>`<article class="product-card"><button class="product-image ${p.bg}" data-a="view" data-id="${p.id}" aria-label="View details for ${p.name}"><span class="product-tag">${p.badge}</span>${art(p.id)}</button><div class="product-info"><div><h3>${p.name}</h3><p>${p.size}</p><p class="rate"><span aria-hidden="true">${stars(p.rating)}</span> ${p.rating} (${p.reviews} reviews)</p></div><div class="price">${money(p.price)}</div></div><p class="desc">${p.short}</p><button class="quick-add" data-a="add" data-id="${p.id}" aria-label="Add ${p.name} to cart">Add to cart</button></article>`).join('');
 function view(id){play('squish');const p=P[id];$('#pm').setAttribute('aria-labelledby','pm-t');$('#pm-card').innerHTML=`<button class="close" data-a="close" aria-label="Close product details">×</button><div class="pm-grid"><div class="pm-img ${p.bg}"><span class="product-tag">${p.badge}</span>${art(id,1)}<p class="hint" id="cm" role="status">Tap the butter. Squeeze until it cracks.</p></div><div class="pm-info"><h2 id="pm-t">${p.name}</h2><p class="rate" style="margin-bottom:4px"><span aria-hidden="true">${stars(p.rating)}</span> ${p.rating} · ${p.reviews} reviews</p><div class="price" style="font-size:22px">${money(p.price)}</div><p style="margin-top:10px"><strong>Size:</strong> ${p.size}<br>${p.short} Squeeze it, press it, watch it rise again. It is a squishy toy and not edible.</p><div class="pm-row"><div class="qty" style="margin:0"><button data-a="q" data-d="-1" aria-label="Decrease quantity">−</button><span id="pq" aria-live="polite">1</span><button data-a="q" data-d="1" aria-label="Increase quantity">+</button></div><button class="btn btn-dark" data-a="addq" data-id="${id}">Add to cart</button></div><details open><summary>Product details</summary><p>Butter-shaped squishy with a salted-butter look. Keep away from heat and direct sunlight and wipe clean with a dry cloth. Not a food item and not for eating. Check the product label for age guidance.</p></details><details><summary>Shipping</summary><p>Switzerland CHF 6.90 (free from CHF 60), Europe CHF 14.90 (free from CHF 120). Example rates for this demo.</p></details><details><summary>Returns</summary><p>Example policy: return unused items in their original packaging within 14 days of delivery.</p></details></div></div>`;open('pm')}
@@ -67,7 +72,7 @@ menu:()=>{const o=$('#mmenu').classList.toggle('open');t.setAttribute('aria-expa
 faq:()=>{const o=t.parentElement.classList.toggle('open');t.setAttribute('aria-expanded',o)},
 cookies:()=>openCk(),ckall:()=>saveCk({pref:1,ana:1,mkt:1}),ckno:()=>saveCk({}),cksave:()=>saveCk({pref:$('#c-pref').checked,ana:$('#c-ana').checked,mkt:$('#c-mkt').checked}),
 legal:()=>{showLegal(t.dataset.k);open('lg')},tab:()=>showLegal(t.dataset.k),toast:()=>toast(t.dataset.m)};
-acts[a]&&acts[a]()});
+acts[a]&&acts[a](e)});
 document.addEventListener('keydown',e=>{
 if(e.key==='Escape'){$$('.layer.show').forEach(l=>shut(l.id));$('#mmenu').classList.remove('open')}
 if(e.key==='Tab'){const l=$$('.layer.show').pop();if(!l)return;const f=[...l.querySelectorAll('button,input,select,textarea,a[href]')].filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){z.focus();e.preventDefault()}else if(!e.shiftKey&&document.activeElement===z){a.focus();e.preventDefault()}}});
