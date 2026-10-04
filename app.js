@@ -1,4 +1,3 @@
-
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const store={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const money=n=>'CHF '+n.toFixed(2),stars=r=>'★'.repeat(Math.round(r))+'☆'.repeat(5-Math.round(r));
@@ -9,7 +8,7 @@ duo:{id:'duo',name:'Small Duo Bundle',size:'2 × small',price:17.9,rating:4.7,re
 const LB={big:['Salted','BUTTERCLOUD','400 g'],mini:['Salted','BUTTERCLOUD','150 g']};
 const stk=(k,w,btn)=>{const l=LB[k],i=`<span class="lb"><i>${l[0]}</i><b>${l[1]}</b><u>${l[2]}</u></span>`;return btn?`<button class="stick" id="stk" data-a="crack" data-n="0" style="--w:${w}" aria-label="Squeeze the squishy to crack it">${i}<svg class="cr" id="cr" viewBox="0 0 230 100" aria-hidden="true"></svg></button>`:`<div class="stick" style="--w:${w}">${i}</div>`};
 const art=(id,big)=>{const k=id==='duo'?'mini':id,w=id==='big'?(big?'84%':'74%'):(big?'72%':'62%');const body=id==='duo'?`<div class="duo">${stk(k,w,big)}${stk(k,w)}</div>`:stk(k,w,big);
-return big?body:`<span class="art">${body}<img class="ph" src="images/${id}.jpg" alt="${P[id].name}" loading="lazy" onload="this.parentNode.classList.add('has')" onerror="this.remove()"></span>`};
+return big?body:`<span class="art">${body}<img class="ph" src="${id}.jpg" alt="${P[id].name}" loading="lazy" onload="this.parentNode.classList.add('has')" onerror="this.remove()"></span>`};
 let cart=store.get('bc-cart',{}),last;
 Object.keys(cart).forEach(k=>{if(!P[k]||!(cart[k]>0))delete cart[k]});
 const dom=c=>c==='CH'||c==='LI';
@@ -20,7 +19,7 @@ function open(id){const l=$('#'+id);last=document.activeElement;l.classList.add(
 function shut(id){$('#'+id).classList.remove('show');if(!$('.layer.show'))document.body.style.overflow='';if(last&&last.isConnected)last.focus()}
 /* ---- Sound ---- */
 let mute=store.get('bc-mute',false);const A={};
-function play(n,v){if(mute)return;try{A[n]=A[n]||new Audio('sounds/'+n+'.wav');const a=A[n].cloneNode();a.volume=v||.6;a.play().catch(()=>{})}catch(e){}}
+function play(n,v){if(mute)return;try{A[n]=A[n]||new Audio(n+'.wav');const a=A[n].cloneNode();a.volume=v||.6;a.play().catch(()=>{})}catch(e){}}
 function syncSnd(){const b=$('#snd');b.setAttribute('aria-pressed',!mute);b.setAttribute('aria-label',mute?'Turn sound on':'Turn sound off')}
 function toggleSnd(){mute=!mute;store.set('bc-mute',mute);syncSnd();play('pop')}
 /* ---- Crack ---- */
