@@ -94,3 +94,5 @@ details{border-top:1px solid var(--line);padding:12px 0;font-size:13px;color:var
 .hero>*,.story>*,.comparison>*,.contact>*,.co>*,.pm-grid>*{min-width:0}img,svg{max-width:100%}
 .cookie-banner{max-height:70vh;overflow:auto}
 @media(max-width:400px){.logo{font-size:20px}.header-actions{gap:5px}.bag{padding:10px 11px}header{padding:0 14px}}
+
+.product-image:has(.art.has){background:#fff}
